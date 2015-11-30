@@ -20,13 +20,13 @@ public class BibliotecaApp {
         System.out.println("Please choose an option by entering a menu Item number or press q to exit" + "\n");
 
         menu.printMenu();
-        String option;
+        String option ="";
         Scanner input = new Scanner(System.in);
         option = input.next();
 
         while (!Objects.equals("0", option)) {
             if (Objects.equals(option, "1")) {
-                PrintBooks(library.getAllBooks());
+                library.PrintBooks(library.getAllBooks());
                 input = new Scanner(System.in);
                 option = input.next();
             }
@@ -38,6 +38,14 @@ public class BibliotecaApp {
                 int x = 0;
                 x = Integer.parseInt(option);
                 library.checkedOutBooks(x);
+            }else if (Objects.equals(option, "3")) {
+                library.PrintBooks(library.getCheckedBook());
+                System.out.println("Please enter the number corresponding to the book \n");
+                input = new Scanner(System.in);
+                option = input.next();
+                int x = 0;
+                x = Integer.parseInt(option);
+                library.ReturnBooks(x);
             } else {
                 System.out.println("Invalid Option - Please choose from the correct list");
                 menu.printMenu();
@@ -46,59 +54,17 @@ public class BibliotecaApp {
             }
 
 
+
         }
 
 
-        if (Objects.equals(option, "0")){
-        System.exit(0);
+        if (Objects.equals(option, "0")) {
+            System.exit(0);
+        }
+
     }
 
-//        public void pr.omptUserInput()
-//        {
-//            input = new Scanner(System.in);
-//            Option= input.next();
-//        }
-        /*System.out.println(library.getAvailableBooks().toString());
-        try {
-            library.checkOut("Romeo and Juliet");
-        }
-        catch(Exception ex)
-        {
-            System.out.println("Exception:"+ex.getMessage());
-        }
-        /*System.out.println(library.getAllBooks().toString());
-        System.out.println(library.getAvailableBooks().toString());
-        try {
-            library.checkOut("Fake Checkout Book");
-        }
-        catch(Exception ex)
-        {
-            System.out.println("Exception:"+ex.getMessage());
-        }
-        System.out.println(library.getAllBooks().toString());
-        System.out.println(library.getAvailableBooks().toString());
-        System.out.println(library.returnBook("Romeo and Juliet"));
 
-        System.out.println(library.returnBook("Fake Checkout Book"));
-        System.out.println(library.getAllBooks().toString());
-        System.out.println(library.getAvailableBooks().toString());
 
-        System.out.println(library.getMenuItems().toString());
-        System.out.println("Hello, world!");*/
-    }
 
-//    public static String Option{
-//        Scanner input = new Scanner(System.in);
-//        return input.next();
-//    }
-
-    private static void PrintBooks(ArrayList<Book> Books) {
-
-        System.out.println(" List of All Books " + "****************" + "\n");
-        System.out.println("Name of Book |" + "" + "Author of the book |" + "Yeah of bublish");
-        for (Book book : Books) {
-            System.out.println(book.toString());
-
-        }
-    }
 }

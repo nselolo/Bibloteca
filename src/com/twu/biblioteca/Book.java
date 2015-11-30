@@ -14,9 +14,7 @@ public class Book
 
         Book book = (Book) o;
 
-        if (!bookTitle.equals(book.bookTitle)) return false;
-        if (!authorName.equals(book.authorName)) return false;
-        return YearPublished.equals(book.YearPublished);
+        return bookTitle.equals(book.bookTitle) && authorName.equals(book.authorName) && YearPublished.equals(book.YearPublished);
 
     }
 

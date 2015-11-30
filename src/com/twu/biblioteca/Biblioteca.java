@@ -5,7 +5,14 @@ import java.util.*;
 public class Biblioteca {
     private ArrayList<Book> allBooks = new ArrayList<Book>();
     private ArrayList<String> menuItems = null;
+
     private ArrayList<Book> checkedBook = new ArrayList<>();
+
+
+    public ArrayList<Book> getCheckedBook() {
+        return checkedBook;
+    }
+
 
     public Biblioteca() {
         allBooks.add(new Book("Romeo and Juliet", "MLSihle", "2000"));
@@ -34,16 +41,24 @@ public class Biblioteca {
         return menuItem;
     }
 
-    public void checkedOutBooks(int position)
-    {
-        checkedBook.add(allBooks.get(position));
+    public void checkedOutBooks(int position) {
+        checkedBook.add(allBooks.get(position - 1));
         allBooks.remove(position);
     }
 
-    public void ReturnBooks(int position)
-    {
+    public void ReturnBooks(int position) {
         allBooks.add(checkedBook.get(position));
         checkedBook.remove(position);
     }
 
+    public void PrintBooks(ArrayList<Book> Books) {
+        int i = 1;
+        System.out.println(" List of All 1Books " + "****************" + "\n");
+        System.out.println("Name of Book |" + "" + "Author of the book |" + "Yeah of bublish");
+        for (Book book : Books) {
+            System.out.println(i + ". " + book.toString());
+            i++;
+
+        }
+    }
 }
