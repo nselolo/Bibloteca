@@ -1,70 +1,52 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
-import java.util.StringJoiner;
-
 public class BibliotecaApp {
 
 
     public static void main(String[] args)
 
     {
-        Biblioteca library = new Biblioteca();
-        Menu menu = new Menu();
+        CommandReader commandReader = new CommandReader();
+        Library library = new Library(new Menu());
 
         System.out.println(library.printWelcomeMessage() + "\n");
 
-
         System.out.println("Please choose an option by entering a menu Item number or press q to exit" + "\n");
+        mainMenu(library);
+        int x = commandReader.readInput();
 
-        menu.printMenu();
-        String option ="";
-        Scanner input = new Scanner(System.in);
-        option = input.next();
-
-        while (!Objects.equals("0", option)) {
-            if (Objects.equals(option, "1")) {
+        while (!(x == 0)) {
+            if (x == 1) {
                 library.PrintBooks(library.getAllBooks());
-                input = new Scanner(System.in);
-                option = input.next();
+                mainMenu(library);
+                x = commandReader.readInput();
             }
 
-            if (Objects.equals(option, "2")) {
+            if (x == 2) {
                 System.out.println("Please enter the number for the book to checkout \n");
-                input = new Scanner(System.in);
-                option = input.next();
-                int x = 0;
-                x = Integer.parseInt(option);
-                library.checkedOutBooks(x);
-            }else if (Objects.equals(option, "3")) {
+                x = commandReader.readInput();
+                library.checkOutBook(x);
+            }
+
+            if (x == 3) {
                 library.PrintBooks(library.getCheckedBook());
                 System.out.println("Please enter the number corresponding to the book \n");
-                input = new Scanner(System.in);
-                option = input.next();
-                int x = 0;
-                x = Integer.parseInt(option);
-                library.ReturnBooks(x);
-            } else {
-                System.out.println("Invalid Option - Please choose from the correct list");
-                menu.printMenu();
-                input = new Scanner(System.in);
-                option = input.next();
+                x = commandReader.readInput();
+                library.ReturnBook(x);
             }
 
-
-
-        }
-
-
-        if (Objects.equals(option, "0")) {
-            System.exit(0);
+            if (x == 4) {
+                System.out.println("Invalid Option - Please choose from the correct list");
+                mainMenu(library);
+                x = commandReader.readInput();
+            }
         }
 
     }
 
-
+    private static void mainMenu(Library library) {
+        library.getMenu().printMenu(library.getMenu().getMenuList());
+    }
 
 
 }
