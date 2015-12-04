@@ -1,11 +1,10 @@
 package com.twu.biblioteca;
 
 
-public class Book
+public class Book implements LibraryItem
 {
     @Override
-    public String toString() {
-       return this.bookTitle +" "+this.authorName+" "+this.YearPublished;
+    public String toString() {return this.bookTitle +" "+this.authorName+" "+this.YearPublished;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class Book
         YearPublished = yearPublished;
     }
 
-    public String getBookTitle() {
+    public String getTitle() {
         return bookTitle;
     }
 
@@ -45,7 +44,7 @@ public class Book
         return authorName;
     }
 
-    public String getYearPublished() {
+    public String getYear() {
         return YearPublished;
     }
 }

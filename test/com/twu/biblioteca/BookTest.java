@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 public class BookTest {
 
     Book book;
+
     @Before
     public void setUp() throws Exception {
         book = new Book("Maru","ML.Semoni","2001");
@@ -22,7 +23,7 @@ public class BookTest {
 
     @Test
     public void shouldReturntTitleOfThebook() throws Exception {
-    assertEquals(book.getBookTitle().equals("Maru"),true);
+    assertEquals(book.getTitle().equals("Maru"),true);
     }
 
     @Test
@@ -32,6 +33,6 @@ public class BookTest {
 
     @Test
     public void shouldReturnYearPublished() throws Exception {
-        assertEquals(book.getYearPublished().equals("2001"),true);
+        assertEquals(book.getYear().equals("2001"),true);
     }
 }

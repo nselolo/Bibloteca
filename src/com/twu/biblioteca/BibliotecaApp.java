@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.io.IOException;
+
 public class BibliotecaApp {
 
 
@@ -17,7 +19,7 @@ public class BibliotecaApp {
 
         while (!(x == 0)) {
             if (x == 1) {
-                library.PrintBooks(library.getAllBooks());
+                library.PrintBooks(library.getLibraryItems());
                 mainMenu(library);
                 x = commandReader.readInput();
             }
@@ -25,17 +27,29 @@ public class BibliotecaApp {
             if (x == 2) {
                 System.out.println("Please enter the number for the book to checkout \n");
                 x = commandReader.readInput();
-                library.checkOutBook(x);
+                library.checkOutItem(x);
             }
 
             if (x == 3) {
-                library.PrintBooks(library.getCheckedBook());
+                library.PrintBooks(library.getCheckedItem());
                 System.out.println("Please enter the number corresponding to the book \n");
                 x = commandReader.readInput();
-                library.ReturnBook(x);
+                library.ReturnItem(x);
             }
 
             if (x == 4) {
+                System.out.println("Please enter number to list Movies");
+                mainMenu(library);
+                x = commandReader.readInput();
+            }
+
+            if (x == 5) {
+                System.out.println("Please enter number of movie to checkout");
+                mainMenu(library);
+                x = commandReader.readInput();
+            }
+
+            if (x == 6) {
                 System.out.println("Invalid Option - Please choose from the correct list");
                 mainMenu(library);
                 x = commandReader.readInput();

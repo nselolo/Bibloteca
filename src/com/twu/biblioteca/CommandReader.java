@@ -18,7 +18,7 @@ public class CommandReader {
     public int validate(String input) {
 
         if (!isNumeric(input)) {
-            return 4;
+            return 6;
         }
         return Integer.parseInt(input);
     }
